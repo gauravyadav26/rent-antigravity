@@ -1,0 +1,1697 @@
+[
+  {
+    "previousDue": -2140,
+    "paymentHistory": [
+      {
+        "date": "2025-06-13",
+        "amount": 4000
+      },
+      {
+        "amount": 4000,
+        "date": "2025-07-10"
+      },
+      {
+        "date": "2025-08-16",
+        "amount": 4000
+      },
+      {
+        "date": "2025-09-15",
+        "amount": 4000
+      },
+      {
+        "date": "2025-11-18",
+        "amount": 3500
+      },
+      {
+        "date": "2025-10-14",
+        "amount": 4000
+      },
+      {
+        "date": "2025-12-04",
+        "amount": 4020
+      }
+    ],
+    "startingDue": 10,
+    "roomNumber": "1",
+    "tenantName": "Aarif",
+    "lastUpdated": "2025-06-18T06:41:43.326Z",
+    "electricityReadings": [
+      {
+        "reading": 88,
+        "date": "2025-06-10"
+      },
+      {
+        "date": "2025-06-13",
+        "reading": 167
+      },
+      {
+        "reading": 222,
+        "date": "2025-07-10"
+      },
+      {
+        "date": "2025-08-16",
+        "reading": 277
+      },
+      {
+        "date": "2025-09-15",
+        "reading": 320
+      },
+      {
+        "date": "2025-12-04",
+        "reading": 390
+      }
+    ],
+    "isActive": true,
+    "advancePaid": 0,
+    "plotName": "home",
+    "startDate": "2025-06-01",
+    "id": 1749568002358,
+    "rentHistory": [
+      {
+        "amount": 3600,
+        "date": "2026-01-27"
+      },
+      {
+        "amount": 3600,
+        "date": "2026-01-27"
+      },
+      {
+        "amount": 3500,
+        "date": "2026-01-27"
+      },
+      {
+        "amount": 3600,
+        "date": "2026-01-27"
+      },
+      {
+        "amount": 3600,
+        "date": "2026-01-27"
+      },
+      {
+        "amount": 3600,
+        "date": "2026-01-01"
+      },
+      {
+        "date": "2026-01-01",
+        "amount": 3600
+      },
+      {
+        "amount": 3500,
+        "date": "2025-06-01"
+      },
+      {
+        "date": "2026-01-27",
+        "amount": 3600
+      },
+      {
+        "date": "2026-01-27",
+        "amount": 3500
+      },
+      {
+        "date": "2026-01-01",
+        "amount": 3600,
+        "notes": "Rent change"
+      },
+      {
+        "date": "2026-01-27",
+        "amount": 3500
+      },
+      {
+        "amount": 3600,
+        "notes": "Rent change",
+        "date": "2025-12-31"
+      }
+    ],
+    "electricityRate": 10,
+    "monthlyRent": 3600,
+    "endDate": null,
+    "lastElectricityDue": 0
+  },
+  {
+    "tenantName": "Taslim",
+    "advancePaid": 0,
+    "paymentHistory": [
+      {
+        "date": "2025-06-04",
+        "amount": 4500
+      },
+      {
+        "date": "2025-07-16",
+        "amount": 4500
+      },
+      {
+        "date": "2025-09-03",
+        "amount": 7000
+      },
+      {
+        "amount": 6000,
+        "date": "2025-10-02"
+      },
+      {
+        "date": "2025-12-04",
+        "amount": 3800
+      },
+      {
+        "date": "2025-11-04",
+        "amount": 4100
+      },
+      {
+        "amount": 5990,
+        "date": "2026-01-05"
+      },
+      {
+        "amount": 4530,
+        "date": "2026-02-07"
+      }
+    ],
+    "startDate": "2025-06-01",
+    "electricityRate": 10,
+    "roomNumber": "2",
+    "endDate": null,
+    "startingDue": 80,
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-06-01"
+      },
+      {
+        "notes": "Rent change",
+        "amount": 3600,
+        "date": "2026-01-01"
+      },
+      {
+        "amount": 3500,
+        "date": "2026-01-27"
+      },
+      {
+        "amount": 3600,
+        "notes": "Rent change",
+        "date": "2025-12-31"
+      }
+    ],
+    "lastElectricityDue": 0,
+    "electricityReadings": [
+      {
+        "reading": 1198,
+        "date": "2025-06-10"
+      },
+      {
+        "reading": 1290,
+        "date": "2025-06-10"
+      },
+      {
+        "date": "2025-07-16",
+        "reading": 1488
+      },
+      {
+        "date": "2025-10-02",
+        "reading": 1886
+      },
+      {
+        "reading": 1913,
+        "date": "2025-12-04"
+      },
+      {
+        "reading": 1999,
+        "date": "2026-01-05"
+      },
+      {
+        "date": "2026-02-07",
+        "reading": 2072
+      }
+    ],
+    "previousDue": 0,
+    "isActive": true,
+    "lastUpdated": "2025-06-18T06:41:43.326Z",
+    "id": 1749576400881,
+    "plotName": "home",
+    "monthlyRent": 3600
+  },
+  {
+    "startingDue": 0,
+    "tenantName": "Surjan",
+    "id": 1749577401777,
+    "monthlyRent": 3500,
+    "roomNumber": "3",
+    "lastUpdated": "2025-06-18T06:41:43.326Z",
+    "previousDue": -410,
+    "electricityRate": 10,
+    "advancePaid": 4000,
+    "plotName": "home",
+    "electricityReadings": [
+      {
+        "date": "2025-06-10",
+        "reading": 2665
+      },
+      {
+        "reading": 2823,
+        "date": "2025-06-14"
+      },
+      {
+        "reading": 2953,
+        "date": "2025-07-14"
+      },
+      {
+        "date": "2025-08-15",
+        "reading": 3041
+      }
+    ],
+    "lastElectricityDue": 0,
+    "endDate": "2025-08-03",
+    "isActive": false,
+    "startDate": "2025-06-01",
+    "paymentHistory": [
+      {
+        "date": "2025-06-14",
+        "amount": 5000
+      },
+      {
+        "amount": 3870,
+        "date": "2025-07-14"
+      },
+      {
+        "date": "2025-08-15",
+        "amount": 5800
+      }
+    ],
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-06-01"
+      }
+    ]
+  },
+  {
+    "endDate": null,
+    "paymentHistory": [
+      {
+        "date": "2025-06-08",
+        "amount": 4500
+      },
+      {
+        "date": "2025-07-11",
+        "amount": 5000
+      },
+      {
+        "date": "2025-09-13",
+        "amount": 5000
+      },
+      {
+        "date": "2025-09-16",
+        "amount": 300
+      },
+      {
+        "amount": 7000,
+        "date": "2025-11-02"
+      },
+      {
+        "amount": 5000,
+        "date": "2025-12-04"
+      },
+      {
+        "date": "2026-01-21",
+        "amount": 4900
+      }
+    ],
+    "tenantName": "Hanif",
+    "electricityReadings": [
+      {
+        "reading": 2225,
+        "date": "2025-06-10"
+      },
+      {
+        "reading": 2765,
+        "date": "2025-09-13"
+      },
+      {
+        "reading": 2942,
+        "date": "2025-12-04"
+      },
+      {
+        "reading": 3013,
+        "date": "2026-01-21"
+      }
+    ],
+    "lastUpdated": "2025-06-18T06:41:43.326Z",
+    "monthlyRent": 3600,
+    "id": 1749580685571,
+    "plotName": "home",
+    "rentHistory": [
+      {
+        "date": "2025-06-01",
+        "amount": 3500
+      },
+      {
+        "notes": "Rent change",
+        "amount": 3600,
+        "date": "2025-12-31"
+      }
+    ],
+    "electricityRate": 10,
+    "previousDue": 1220,
+    "startingDue": 12360,
+    "roomNumber": "5",
+    "advancePaid": 0,
+    "lastElectricityDue": 0,
+    "isActive": true,
+    "startDate": "2025-06-01"
+  },
+  {
+    "roomNumber": "6",
+    "lastUpdated": "2025-06-18T06:41:43.326Z",
+    "advancePaid": 0,
+    "paymentHistory": [
+      {
+        "amount": 5500,
+        "date": "2025-06-11"
+      },
+      {
+        "date": "2025-07-07",
+        "amount": 6000
+      },
+      {
+        "date": "2025-08-06",
+        "amount": 6000
+      },
+      {
+        "amount": 5000,
+        "date": "2025-10-21"
+      },
+      {
+        "date": "2025-11-18",
+        "amount": 4000
+      },
+      {
+        "amount": 5000,
+        "date": "2025-12-15"
+      },
+      {
+        "date": "2026-01-20",
+        "amount": 3900
+      }
+    ],
+    "isActive": true,
+    "electricityReadings": [
+      {
+        "reading": 848,
+        "date": "2025-06-10"
+      },
+      {
+        "date": "2025-06-11",
+        "reading": 966
+      },
+      {
+        "reading": 1047,
+        "date": "2025-07-07"
+      },
+      {
+        "date": "2025-08-06",
+        "reading": 1122
+      },
+      {
+        "date": "2025-10-21",
+        "reading": 1269
+      },
+      {
+        "reading": 1298,
+        "date": "2025-11-18"
+      },
+      {
+        "date": "2025-12-15",
+        "reading": 1338
+      }
+    ],
+    "endDate": null,
+    "tenantName": "Azhar",
+    "lastElectricityDue": 0,
+    "electricityRate": 10,
+    "startDate": "2025-06-01",
+    "rentHistory": [
+      {
+        "date": "2025-06-01",
+        "amount": 3500
+      },
+      {
+        "date": "2025-12-31",
+        "amount": 3599.98,
+        "notes": "Rent change"
+      }
+    ],
+    "plotName": "home",
+    "previousDue": -7400,
+    "startingDue": 7000,
+    "id": 1749589531704,
+    "monthlyRent": 3599.98
+  },
+  {
+    "roomNumber": "7",
+    "electricityReadings": [
+      {
+        "reading": 1221,
+        "date": "2025-06-10"
+      },
+      {
+        "reading": 1308,
+        "date": "2026-02-15"
+      }
+    ],
+    "paymentHistory": [
+      {
+        "amount": 7000,
+        "date": "2025-06-18"
+      },
+      {
+        "amount": 5000,
+        "date": "2025-11-08"
+      },
+      {
+        "amount": 10000,
+        "date": "2026-02-18"
+      }
+    ],
+    "isActive": true,
+    "rentHistory": [
+      {
+        "date": "2025-06-01",
+        "amount": 3500
+      },
+      {
+        "notes": "Rent change",
+        "date": "2025-12-31",
+        "amount": 3600
+      }
+    ],
+    "plotName": "home",
+    "electricityRate": 10,
+    "monthlyRent": 3600,
+    "tenantName": "Ratan",
+    "lastElectricityDue": 0,
+    "startingDue": 3520,
+    "startDate": "2025-06-01",
+    "previousDue": 0,
+    "id": 1749590114125,
+    "advancePaid": 0,
+    "lastUpdated": "2025-06-18T06:41:43.326Z",
+    "endDate": null
+  },
+  {
+    "advancePaid": 0,
+    "paymentHistory": [
+      {
+        "amount": 4000,
+        "date": "2025-06-11"
+      },
+      {
+        "date": "2025-08-14",
+        "amount": 7000
+      },
+      {
+        "amount": 6000,
+        "date": "2025-12-13"
+      },
+      {
+        "date": "2026-01-22",
+        "amount": 3900
+      },
+      {
+        "amount": 6000,
+        "date": "2026-02-10"
+      }
+    ],
+    "lastUpdated": "2025-06-18T06:41:43.326Z",
+    "tenantName": "Pratap",
+    "previousDue": 4840,
+    "isActive": true,
+    "endDate": null,
+    "roomNumber": "8",
+    "startDate": "2025-06-01",
+    "electricityReadings": [
+      {
+        "reading": 534,
+        "date": "2025-06-10"
+      },
+      {
+        "date": "2025-06-11",
+        "reading": 711
+      },
+      {
+        "reading": 928,
+        "date": "2025-12-15"
+      },
+      {
+        "date": "2026-01-22",
+        "reading": 935
+      },
+      {
+        "date": "2026-02-10",
+        "reading": 939
+      }
+    ],
+    "id": 1749590492642,
+    "electricityRate": 10,
+    "lastElectricityDue": 0,
+    "plotName": "home",
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-06-01"
+      },
+      {
+        "date": "2025-12-31",
+        "notes": "Rent change",
+        "amount": 3600
+      }
+    ],
+    "monthlyRent": 3600,
+    "startingDue": 3120
+  },
+  {
+    "advancePaid": 0,
+    "roomNumber": "9",
+    "startDate": "2025-06-01",
+    "startingDue": 3570,
+    "id": 1749590820500,
+    "electricityReadings": [
+      {
+        "reading": 833,
+        "date": "2025-06-10"
+      },
+      {
+        "date": "2025-06-18",
+        "reading": 868
+      },
+      {
+        "reading": 904,
+        "date": "2025-07-16"
+      },
+      {
+        "reading": 921,
+        "date": "2025-07-31"
+      }
+    ],
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-06-01"
+      }
+    ],
+    "monthlyRent": 3500,
+    "electricityRate": 10,
+    "endDate": "2025-07-31",
+    "lastElectricityDue": 0,
+    "previousDue": 0,
+    "tenantName": "Nipin",
+    "paymentHistory": [
+      {
+        "amount": 3880,
+        "date": "2025-06-18"
+      },
+      {
+        "date": "2025-07-16",
+        "amount": 4000
+      },
+      {
+        "amount": 3570,
+        "date": "2025-08-15"
+      }
+    ],
+    "lastUpdated": "2025-06-18T06:41:43.327Z",
+    "isActive": false,
+    "plotName": "home"
+  },
+  {
+    "tenantName": "Rakesh Nipin",
+    "startingDue": 3500,
+    "id": 1749590896597,
+    "monthlyRent": 3500,
+    "roomNumber": "10",
+    "previousDue": -570,
+    "lastUpdated": "2025-06-18T06:41:43.327Z",
+    "electricityRate": 10,
+    "advancePaid": 0,
+    "plotName": "home",
+    "electricityReadings": [
+      {
+        "date": "2025-06-10",
+        "reading": 910
+      },
+      {
+        "reading": 970,
+        "date": "2025-06-10"
+      },
+      {
+        "reading": 1051,
+        "date": "2025-07-13"
+      },
+      {
+        "reading": 1093,
+        "date": "2025-07-31"
+      }
+    ],
+    "lastElectricityDue": 0,
+    "endDate": "2025-07-31",
+    "isActive": false,
+    "startDate": "2025-06-01",
+    "paymentHistory": [
+      {
+        "date": "2025-06-10",
+        "amount": 4100
+      },
+      {
+        "date": "2025-07-14",
+        "amount": 4300
+      },
+      {
+        "amount": 4500,
+        "date": "2025-07-31"
+      }
+    ],
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-06-01"
+      }
+    ]
+  },
+  {
+    "lastUpdated": "2025-06-18T06:41:43.327Z",
+    "electricityReadings": [
+      {
+        "reading": 659,
+        "date": "2025-06-10"
+      },
+      {
+        "date": "2025-06-10",
+        "reading": 702
+      },
+      {
+        "reading": 753,
+        "date": "2025-07-10"
+      },
+      {
+        "reading": 783,
+        "date": "2025-07-30"
+      }
+    ],
+    "startingDue": 2960,
+    "tenantName": "Babulal Sala",
+    "isActive": false,
+    "advancePaid": 0,
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-06-01"
+      }
+    ],
+    "endDate": "2025-07-31",
+    "startDate": "2025-06-01",
+    "plotName": "home",
+    "paymentHistory": [
+      {
+        "amount": 4500,
+        "date": "2025-06-10"
+      },
+      {
+        "date": "2025-07-10",
+        "amount": 5000
+      },
+      {
+        "date": "2025-07-30",
+        "amount": 5200
+      }
+    ],
+    "monthlyRent": 3500,
+    "roomNumber": "11",
+    "lastElectricityDue": 0,
+    "previousDue": -3500,
+    "electricityRate": 10,
+    "id": 1749591043369
+  },
+  {
+    "isActive": true,
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-06-01"
+      },
+      {
+        "date": "2025-12-31",
+        "notes": "Rent change",
+        "amount": 3599.99
+      }
+    ],
+    "lastUpdated": "2025-06-18T06:41:43.327Z",
+    "lastElectricityDue": 0,
+    "electricityReadings": [
+      {
+        "date": "2025-06-10",
+        "reading": 692
+      },
+      {
+        "date": "2025-06-18",
+        "reading": 792
+      },
+      {
+        "date": "2025-07-14",
+        "reading": 897
+      },
+      {
+        "date": "2025-08-15",
+        "reading": 992
+      },
+      {
+        "reading": 1053,
+        "date": "2025-09-07"
+      },
+      {
+        "reading": 1148,
+        "date": "2025-10-12"
+      },
+      {
+        "reading": 1208,
+        "date": "2025-11-16"
+      },
+      {
+        "reading": 1228,
+        "date": "2025-12-15"
+      },
+      {
+        "reading": 1248,
+        "date": "2026-01-13"
+      },
+      {
+        "date": "2026-02-14",
+        "reading": 1266
+      }
+    ],
+    "startDate": "2025-06-01",
+    "roomNumber": "12",
+    "monthlyRent": 3599.99,
+    "id": 1749591226754,
+    "previousDue": -6720,
+    "paymentHistory": [
+      {
+        "amount": 4500,
+        "date": "2025-06-18"
+      },
+      {
+        "date": "2025-07-14",
+        "amount": 4000
+      },
+      {
+        "date": "2025-08-15",
+        "amount": 3500
+      },
+      {
+        "amount": 5000,
+        "date": "2025-09-07"
+      },
+      {
+        "amount": 5000,
+        "date": "2025-10-12"
+      },
+      {
+        "amount": 4500,
+        "date": "2025-11-16"
+      },
+      {
+        "amount": 3500,
+        "date": "2025-12-14"
+      },
+      {
+        "amount": 3900,
+        "date": "2026-01-13"
+      },
+      {
+        "date": "2026-02-14",
+        "amount": 4500
+      }
+    ],
+    "plotName": "home",
+    "advancePaid": 0,
+    "startingDue": 2670,
+    "electricityRate": 10,
+    "tenantName": "Naresh"
+  },
+  {
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-06-01"
+      },
+      {
+        "notes": "Rent change",
+        "date": "2025-12-31",
+        "amount": 3600
+      }
+    ],
+    "lastElectricityDue": 0,
+    "endDate": null,
+    "electricityRate": 10,
+    "paymentHistory": [
+      {
+        "amount": 4500,
+        "date": "2025-06-20"
+      },
+      {
+        "date": "2025-07-13",
+        "amount": 4500
+      },
+      {
+        "date": "2025-09-13",
+        "amount": 5000
+      },
+      {
+        "date": "2025-10-10",
+        "amount": 5000
+      },
+      {
+        "date": "2025-11-16",
+        "amount": 5000
+      },
+      {
+        "date": "2025-12-12",
+        "amount": 5000
+      },
+      {
+        "date": "2026-01-12",
+        "amount": 4900
+      },
+      {
+        "date": "2026-02-14",
+        "amount": 3900
+      }
+    ],
+    "previousDue": 0,
+    "advancePaid": 0,
+    "tenantName": "Pratap Bhai",
+    "isActive": true,
+    "id": 1749591279865,
+    "lastUpdated": "2025-06-18T06:41:43.327Z",
+    "plotName": "home",
+    "roomNumber": "14",
+    "monthlyRent": 3600,
+    "startDate": "2025-06-01",
+    "startingDue": 2430,
+    "electricityReadings": [
+      {
+        "date": "2025-06-10",
+        "reading": 169
+      },
+      {
+        "date": "2025-06-14",
+        "reading": 255
+      },
+      {
+        "date": "2025-07-13",
+        "reading": 352
+      },
+      {
+        "date": "2025-09-13",
+        "reading": 551
+      },
+      {
+        "date": "2025-10-10",
+        "reading": 613
+      },
+      {
+        "reading": 669,
+        "date": "2025-11-16"
+      },
+      {
+        "reading": 697,
+        "date": "2025-12-12"
+      },
+      {
+        "reading": 731,
+        "date": "2026-01-12"
+      }
+    ]
+  },
+  {
+    "roomNumber": "13",
+    "monthlyRent": 3500,
+    "tenantName": "Surjan Dad",
+    "advancePaid": 0,
+    "rentHistory": [
+      {
+        "date": "2025-06-01",
+        "amount": 3500
+      }
+    ],
+    "lastUpdated": "2025-06-18T06:41:43.327Z",
+    "id": 1749591362556,
+    "endDate": "2025-06-18",
+    "isActive": true,
+    "electricityRate": 10,
+    "paymentHistory": [
+      {
+        "amount": 4300,
+        "date": "2025-06-14"
+      }
+    ],
+    "previousDue": 3630,
+    "electricityReadings": [
+      {
+        "reading": 892,
+        "date": "2025-06-10"
+      },
+      {
+        "reading": 982,
+        "date": "2025-06-14"
+      },
+      {
+        "reading": 995,
+        "date": "2025-06-18"
+      }
+    ],
+    "lastElectricityDue": 0,
+    "plotName": "home",
+    "startDate": "2025-06-01",
+    "startingDue": 2900
+  },
+  {
+    "tenantName": "Nipin 2nd Son",
+    "startingDue": 3500,
+    "endDate": "2025-07-31",
+    "startDate": "2025-06-01",
+    "lastElectricityDue": 0,
+    "previousDue": 0,
+    "plotName": "home",
+    "isActive": false,
+    "roomNumber": "15",
+    "monthlyRent": 3500,
+    "id": 1749591431466,
+    "rentHistory": [
+      {
+        "date": "2025-06-01",
+        "amount": 3500
+      }
+    ],
+    "paymentHistory": [
+      {
+        "date": "2025-06-18",
+        "amount": 4120
+      },
+      {
+        "amount": 3930,
+        "date": "2025-07-14"
+      },
+      {
+        "amount": 3750,
+        "date": "2025-07-31"
+      }
+    ],
+    "advancePaid": 0,
+    "electricityRate": 10,
+    "lastUpdated": "2025-06-18T06:41:43.327Z",
+    "electricityReadings": [
+      {
+        "reading": 56,
+        "date": "2025-06-10"
+      },
+      {
+        "date": "2025-06-14",
+        "reading": 118
+      },
+      {
+        "reading": 161,
+        "date": "2025-07-14"
+      },
+      {
+        "date": "2025-07-31",
+        "reading": 186
+      }
+    ]
+  },
+  {
+    "advancePaid": 1500,
+    "rentHistory": [
+      {
+        "date": "2025-04-06",
+        "amount": 3500
+      },
+      {
+        "notes": "Rent change",
+        "date": "2025-12-31",
+        "amount": 3600
+      }
+    ],
+    "isActive": true,
+    "roomNumber": "16",
+    "plotName": "home",
+    "id": 1749591519013,
+    "previousDue": 0,
+    "electricityRate": 10,
+    "endDate": null,
+    "startingDue": 0,
+    "lastElectricityDue": 0,
+    "electricityReadings": [
+      {
+        "reading": 1426,
+        "date": "2025-06-10"
+      },
+      {
+        "date": "2025-06-10",
+        "reading": 1445
+      },
+      {
+        "reading": 1487,
+        "date": "2025-06-11"
+      },
+      {
+        "reading": 1540,
+        "date": "2025-07-10"
+      },
+      {
+        "date": "2025-12-06",
+        "reading": 1619
+      },
+      {
+        "reading": 1655,
+        "date": "2026-01-05"
+      }
+    ],
+    "monthlyRent": 3600,
+    "tenantName": "New Mistri",
+    "startDate": "2025-04-06",
+    "paymentHistory": [
+      {
+        "date": "2025-04-06",
+        "amount": 1500
+      },
+      {
+        "date": "2025-05-10",
+        "amount": 3690
+      },
+      {
+        "amount": 4000,
+        "date": "2025-06-11"
+      },
+      {
+        "amount": 4100,
+        "date": "2025-07-10"
+      },
+      {
+        "date": "2025-11-02",
+        "amount": 5000
+      },
+      {
+        "amount": 5000,
+        "date": "2025-12-06"
+      },
+      {
+        "date": "2026-01-05",
+        "amount": 4900
+      }
+    ],
+    "lastUpdated": "2025-06-18T06:41:43.327Z"
+  },
+  {
+    "electricityReadings": [
+      {
+        "reading": 971,
+        "date": "2025-06-10"
+      },
+      {
+        "date": "2025-06-18",
+        "reading": 1024
+      },
+      {
+        "date": "2025-07-14",
+        "reading": 1058
+      },
+      {
+        "date": "2025-08-15",
+        "reading": 1085
+      }
+    ],
+    "electricityRate": 10,
+    "isActive": false,
+    "tenantName": "Suresh",
+    "id": 1749591814695,
+    "advancePaid": 0,
+    "plotName": "home",
+    "paymentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-07-14"
+      },
+      {
+        "date": "2025-08-15",
+        "amount": 3500
+      },
+      {
+        "date": "2025-09-07",
+        "amount": 5000
+      }
+    ],
+    "endDate": "2025-09-09",
+    "roomNumber": "17",
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-06-01"
+      }
+    ],
+    "lastElectricityDue": 0,
+    "startingDue": 0,
+    "previousDue": 3140,
+    "lastUpdated": "2025-06-18T06:41:43.327Z",
+    "monthlyRent": 3500,
+    "startDate": "2025-06-01"
+  },
+  {
+    "electricityReadings": [
+      {
+        "reading": 1086,
+        "date": "2025-06-22"
+      },
+      {
+        "reading": 1206,
+        "date": "2025-07-31"
+      }
+    ],
+    "startingDue": 0,
+    "tenantName": "Rifina",
+    "advancePaid": 1000,
+    "isActive": false,
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-06-22"
+      }
+    ],
+    "endDate": "2025-08-04",
+    "startDate": "2025-06-22",
+    "plotName": "home",
+    "paymentHistory": [
+      {
+        "date": "2025-06-22",
+        "amount": 1000
+      },
+      {
+        "date": "2025-07-31",
+        "amount": 4000
+      },
+      {
+        "amount": 2000,
+        "date": "2025-08-06"
+      }
+    ],
+    "monthlyRent": 3500,
+    "roomNumber": "4",
+    "lastElectricityDue": 0,
+    "previousDue": 4700,
+    "electricityRate": 10,
+    "id": 1750589004581
+  },
+  {
+    "monthlyRent": 3600,
+    "previousDue": 0,
+    "plotName": "home",
+    "advancePaid": 1500,
+    "tenantName": "Single Lady",
+    "electricityReadings": [
+      {
+        "reading": 995,
+        "date": "2025-07-08"
+      },
+      {
+        "reading": 1027,
+        "date": "2025-09-13"
+      },
+      {
+        "date": "2025-10-15",
+        "reading": 1037
+      },
+      {
+        "date": "2025-12-13",
+        "reading": 1043
+      }
+    ],
+    "id": 1752006287524,
+    "isActive": true,
+    "electricityRate": 10,
+    "startDate": "2025-07-01",
+    "paymentHistory": [
+      {
+        "amount": 500,
+        "date": "2025-07-14"
+      },
+      {
+        "amount": 4500,
+        "date": "2025-07-22"
+      },
+      {
+        "amount": 1000,
+        "date": "2025-09-13"
+      },
+      {
+        "date": "2025-08-25",
+        "amount": 3000
+      },
+      {
+        "amount": 3420,
+        "date": "2025-10-15"
+      },
+      {
+        "amount": 3500,
+        "date": "2025-11-29"
+      },
+      {
+        "date": "2025-12-13",
+        "amount": 3600
+      },
+      {
+        "date": "2026-01-12",
+        "amount": 3500
+      },
+      {
+        "amount": 3600,
+        "date": "2026-02-07"
+      }
+    ],
+    "roomNumber": "13",
+    "endDate": null,
+    "lastElectricityDue": 0,
+    "startingDue": 0,
+    "rentHistory": [
+      {
+        "date": "2025-06-25",
+        "amount": 3500
+      },
+      {
+        "date": "2025-12-31",
+        "notes": "Rent change",
+        "amount": 3600
+      }
+    ]
+  },
+  {
+    "roomNumber": "4",
+    "electricityRate": 10,
+    "startingDue": 0,
+    "monthlyRent": 3600,
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-08-05"
+      },
+      {
+        "amount": 3600,
+        "notes": "Rent change",
+        "date": "2025-12-31"
+      }
+    ],
+    "endDate": "2026-02-05",
+    "startDate": "2025-08-05",
+    "lastElectricityDue": 0,
+    "tenantName": "Mistri",
+    "previousDue": 4090,
+    "isActive": false,
+    "id": 1755011645180,
+    "advancePaid": 3000,
+    "electricityReadings": [
+      {
+        "reading": 1205,
+        "date": "2025-08-12"
+      },
+      {
+        "date": "2025-11-18",
+        "reading": 1395
+      },
+      {
+        "date": "2025-12-15",
+        "reading": 1414
+      },
+      {
+        "date": "2026-01-20",
+        "reading": 1429
+      },
+      {
+        "date": "2026-02-07",
+        "reading": 1434
+      }
+    ],
+    "plotName": "home",
+    "paymentHistory": [
+      {
+        "amount": 3000,
+        "date": "2025-08-12"
+      },
+      {
+        "amount": 5000,
+        "date": "2025-10-21"
+      },
+      {
+        "amount": 7000,
+        "date": "2025-12-13"
+      },
+      {
+        "amount": 900,
+        "date": "2025-11-20"
+      },
+      {
+        "amount": 7000,
+        "date": "2026-02-02"
+      }
+    ]
+  },
+  {
+    "tenantName": "New Ladka",
+    "previousDue": 0,
+    "advancePaid": 3600,
+    "roomNumber": "17",
+    "rentHistory": [
+      {
+        "amount": 3600,
+        "date": "2025-09-01"
+      }
+    ],
+    "electricityRate": 10,
+    "id": 1757262554525,
+    "isActive": true,
+    "plotName": "home",
+    "lastElectricityDue": 0,
+    "startingDue": 0,
+    "electricityReadings": [
+      {
+        "reading": 1085,
+        "date": "2025-09-07"
+      },
+      {
+        "reading": 1123,
+        "date": "2025-12-15"
+      }
+    ],
+    "monthlyRent": 3600,
+    "paymentHistory": [
+      {
+        "date": "2025-09-07",
+        "amount": 3600
+      },
+      {
+        "amount": 3600,
+        "date": "2025-10-10"
+      },
+      {
+        "amount": 3600,
+        "date": "2025-11-12"
+      },
+      {
+        "date": "2025-12-15",
+        "amount": 3600
+      },
+      {
+        "amount": 4100,
+        "date": "2026-02-18"
+      },
+      {
+        "date": "2026-01-15",
+        "amount": 3600
+      }
+    ],
+    "startDate": "2025-09-01"
+  },
+  {
+    "monthlyRent": 3500,
+    "roomNumber": "11",
+    "id": 1757438418683,
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-09-06"
+      }
+    ],
+    "plotName": "home",
+    "startingDue": 0,
+    "tenantName": "Rafina Dad",
+    "paymentHistory": [
+      {
+        "amount": 1000,
+        "date": "2025-09-11"
+      },
+      {
+        "amount": 2500,
+        "date": "2025-10-11"
+      }
+    ],
+    "startDate": "2025-09-06",
+    "endDate": "2025-09-30",
+    "advancePaid": 1000,
+    "isActive": false,
+    "lastElectricityDue": 0,
+    "previousDue": 0,
+    "electricityReadings": [
+      {
+        "date": "2025-09-09",
+        "reading": 783
+      }
+    ],
+    "electricityRate": 10
+  },
+  {
+    "startingDue": 3140,
+    "monthlyRent": 3600,
+    "lastElectricityDue": 0,
+    "advancePaid": 0,
+    "electricityReadings": [
+      {
+        "reading": 3041,
+        "date": "2025-09-09"
+      },
+      {
+        "date": "2025-10-12",
+        "reading": 3113
+      },
+      {
+        "reading": 3159,
+        "date": "2025-12-03"
+      },
+      {
+        "reading": 3179,
+        "date": "2026-01-05"
+      },
+      {
+        "date": "2026-02-02",
+        "reading": 3195
+      }
+    ],
+    "electricityRate": 10,
+    "roomNumber": "3",
+    "isActive": true,
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-09-01"
+      },
+      {
+        "amount": 3600,
+        "date": "2025-12-31",
+        "notes": "Rent change"
+      }
+    ],
+    "paymentHistory": [
+      {
+        "date": "2025-10-12",
+        "amount": 5000
+      },
+      {
+        "amount": 3500,
+        "date": "2025-12-14"
+      },
+      {
+        "date": "2025-12-14",
+        "amount": 3960
+      },
+      {
+        "amount": 3700,
+        "date": "2026-01-05"
+      },
+      {
+        "date": "2026-02-02",
+        "amount": 3860
+      }
+    ],
+    "startDate": "2025-10-01",
+    "previousDue": -2160,
+    "id": 1757438988838,
+    "plotName": "home",
+    "endDate": null,
+    "tenantName": "Suresh"
+  },
+  {
+    "endDate": null,
+    "plotName": "home",
+    "lastElectricityDue": 0,
+    "id": 1757580567909,
+    "roomNumber": "9",
+    "startDate": "2025-09-11",
+    "electricityRate": 10,
+    "previousDue": 0,
+    "isActive": true,
+    "startingDue": 0,
+    "paymentHistory": [
+      {
+        "amount": 500,
+        "date": "2025-09-11"
+      },
+      {
+        "date": "2025-11-23",
+        "amount": 4000
+      },
+      {
+        "date": "2026-01-24",
+        "amount": 5500
+      }
+    ],
+    "monthlyRent": 3600,
+    "electricityReadings": [
+      {
+        "date": "2025-09-11",
+        "reading": 783
+      },
+      {
+        "date": "2025-12-15",
+        "reading": 990
+      }
+    ],
+    "advancePaid": 500,
+    "rentHistory": [
+      {
+        "amount": 3600,
+        "date": "2025-09-11"
+      }
+    ],
+    "tenantName": "EV"
+  },
+  {
+    "electricityRate": 10,
+    "advancePaid": 0,
+    "startingDue": 0,
+    "tenantName": "Marina",
+    "monthlyRent": 3600,
+    "previousDue": 3840,
+    "isActive": true,
+    "paymentHistory": [
+      {
+        "amount": 2000,
+        "date": "2025-10-21"
+      },
+      {
+        "date": "2025-11-24",
+        "amount": 3600
+      },
+      {
+        "date": "2025-12-15",
+        "amount": 3500
+      }
+    ],
+    "id": 1760504863089,
+    "lastElectricityDue": 0,
+    "startDate": "2025-10-15",
+    "plotName": "home",
+    "roomNumber": "10",
+    "rentHistory": [
+      {
+        "amount": 3600,
+        "date": "2025-10-15"
+      }
+    ],
+    "electricityReadings": [
+      {
+        "date": "2025-10-15",
+        "reading": 1092
+      },
+      {
+        "reading": 1110,
+        "date": "2025-12-15"
+      },
+      {
+        "reading": 1134,
+        "date": "2026-01-13"
+      }
+    ]
+  },
+  {
+    "startingDue": 0,
+    "id": 1760504895028,
+    "rentHistory": [
+      {
+        "amount": 3600,
+        "date": "2025-10-11"
+      }
+    ],
+    "startDate": "2025-10-11",
+    "plotName": "home",
+    "paymentHistory": [
+      {
+        "amount": 500,
+        "date": "2025-10-21"
+      },
+      {
+        "date": "2025-10-23",
+        "amount": 1500
+      },
+      {
+        "amount": 3500,
+        "date": "2025-11-16"
+      },
+      {
+        "amount": 7200,
+        "date": "2026-01-06"
+      }
+    ],
+    "electricityReadings": [
+      {
+        "date": "2025-10-15",
+        "reading": 783
+      },
+      {
+        "date": "2025-12-15",
+        "reading": 824
+      }
+    ],
+    "advancePaid": 500,
+    "electricityRate": 10,
+    "previousDue": 0,
+    "roomNumber": "11",
+    "tenantName": "Rabiul",
+    "endDate": null,
+    "lastElectricityDue": 0,
+    "monthlyRent": 3600,
+    "isActive": true
+  },
+  {
+    "id": 1760505093018,
+    "lastElectricityDue": 0,
+    "tenantName": "Majibur",
+    "startDate": "2025-10-05",
+    "advancePaid": 0,
+    "paymentHistory": [],
+    "rentHistory": [
+      {
+        "amount": 3500,
+        "date": "2025-10-05"
+      }
+    ],
+    "roomNumber": "15",
+    "electricityRate": 10,
+    "electricityReadings": [
+      {
+        "reading": 201,
+        "date": "2025-10-15"
+      },
+      {
+        "reading": 284,
+        "date": "2025-12-15"
+      }
+    ],
+    "monthlyRent": 3500,
+    "previousDue": 4330,
+    "startingDue": 0,
+    "plotName": "home",
+    "isActive": true
+  }
+]

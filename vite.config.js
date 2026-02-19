@@ -1,0 +1,38 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { VitePWA } from 'vite-plugin-pwa'
+
+export default defineConfig({
+  server: {
+    host: true, // Expose to network
+  },
+  plugins: [
+    react(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+      manifest: {
+        name: 'Rent Management System',
+        short_name: 'RentMS',
+        description: 'Manage rental properties, tenants, and payments',
+        theme_color: '#3b82f6',
+        background_color: '#0f172a',
+        display: 'standalone',
+        icons: [
+          {
+            src: '/vite.svg',
+            sizes: '192x192',
+            type: 'image/svg+xml',
+            purpose: 'any maskable'
+          },
+          {
+            src: '/vite.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+            purpose: 'any maskable'
+          }
+        ]
+      }
+    })
+  ],
+})
