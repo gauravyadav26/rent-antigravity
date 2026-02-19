@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
+import { useToast } from '../components/Toast';
+import { formatIndianNumber } from '../lib/calculations';
 import { ArrowLeft, ArrowRight, Check, User, DollarSign, Zap } from 'lucide-react';
 
 const STEPS = [
@@ -27,6 +29,7 @@ export default function TenantForm() {
     const { tenants, allTenants, addTenant, editTenant, theme } = useApp();
     const isDark = theme === 'dark';
     const isEdit = Boolean(id);
+    const toast = useToast();
 
     const [step, setStep] = useState(1);
     const [form, setForm] = useState(defaultForm);
@@ -80,6 +83,7 @@ export default function TenantForm() {
                 : [];
             addTenant({ ...data, electricityReadings: readings });
         }
+        toast(isEdit ? 'Tenant updated' : `${data.tenantName} added`, 'success');
         navigate('/tenants');
     };
 
@@ -229,9 +233,4 @@ export default function TenantForm() {
             </div>
         </div>
     );
-}
-
-function formatIndianNumber(num) {
-    if (!num) return '0';
-    return num.toLocaleString('en-IN');
 }

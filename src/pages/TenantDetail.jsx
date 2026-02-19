@@ -198,11 +198,11 @@ export default function TenantDetail() {
                                             <td className="px-4 py-2.5 text-right font-semibold">{bill > 0 ? `₹${formatIndianNumber(bill)}` : '-'}</td>
                                             <td className="px-4 py-2.5 text-right flex justify-end gap-2">
                                                 <button onClick={() => { setEditingReading(r); setElectricityModal(true); }}
-                                                    className="text-amber-400 hover:text-amber-300 transition-colors">
+                                                    className="text-amber-400 hover:text-amber-300 transition-colors" aria-label="Edit reading">
                                                     <Edit2 size={12} />
                                                 </button>
                                                 <button onClick={() => { if (confirm('Delete this reading?')) deleteElectricityReading(tenant.id, r.id); }}
-                                                    className="text-red-400 hover:text-red-300 transition-colors">
+                                                    className="text-red-400 hover:text-red-300 transition-colors" aria-label="Delete reading">
                                                     <Trash2 size={12} />
                                                 </button>
                                             </td>
@@ -245,11 +245,11 @@ export default function TenantDetail() {
                                         <td className="px-4 py-2.5 text-slate-400 max-w-24 truncate">{p.notes || '-'}</td>
                                         <td className="px-4 py-2.5 text-right flex justify-end gap-2">
                                             <button onClick={() => { setEditingPayment(p); setPaymentModal(true); }}
-                                                className="text-blue-400 hover:text-blue-300 transition-colors">
+                                                className="text-blue-400 hover:text-blue-300 transition-colors" aria-label="Edit payment">
                                                 <Edit2 size={12} />
                                             </button>
                                             <button onClick={() => { if (confirm('Delete this payment?')) deletePayment(tenant.id, p.id); }}
-                                                className="text-red-400 hover:text-red-300 transition-colors">
+                                                className="text-red-400 hover:text-red-300 transition-colors" aria-label="Delete payment">
                                                 <Trash2 size={12} />
                                             </button>
                                         </td>

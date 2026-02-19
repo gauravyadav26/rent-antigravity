@@ -6,6 +6,7 @@ import { Search, Plus, Edit2, Zap, CreditCard, LogOut, Trash2, Eye, ChevronDown,
 import PaymentModal from '../components/modals/PaymentModal';
 import ElectricityModal from '../components/modals/ElectricityModal';
 import VacateModal from '../components/modals/VacateModal';
+import { useToast } from '../components/Toast';
 
 function TenantCard({ tenant, isDark, onEdit, onPayment, onElectricity, onVacate, onDelete, onView }) {
     const [expanded, setExpanded] = useState(false);
@@ -92,10 +93,10 @@ function TenantCard({ tenant, isDark, onEdit, onPayment, onElectricity, onVacate
                         </button>
                     </>
                 )}
-                <button onClick={() => onDelete(tenant)} className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors bg-red-500/10 hover:bg-red-500/20 text-red-400`}>
+                <button onClick={() => onDelete(tenant)} className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors bg-red-500/10 hover:bg-red-500/20 text-red-400`} aria-label={`Delete ${tenant.tenantName}`}>
                     <Trash2 size={12} />
                 </button>
-                <button onClick={() => setExpanded(e => !e)} className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${btnBase} ml-auto`}>
+                <button onClick={() => setExpanded(e => !e)} className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${btnBase} ml-auto`} aria-label={expanded ? 'Collapse details' : 'Expand details'}>
                     {expanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
                 </button>
             </div>
@@ -107,6 +108,7 @@ export default function TenantList() {
     const { tenants, deleteTenant, theme } = useApp();
     const navigate = useNavigate();
     const isDark = theme === 'dark';
+    const toast = useToast();
 
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState('active');
@@ -137,8 +139,9 @@ export default function TenantList() {
     const handleDelete = useCallback((tenant) => {
         if (confirm(`Delete ${tenant.tenantName}? This cannot be undone.`)) {
             deleteTenant(tenant.id);
+            toast(`${tenant.tenantName} deleted`, 'success');
         }
-    }, [deleteTenant]);
+    }, [deleteTenant, toast]);
 
     const inputBg = isDark ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500' : 'bg-white border-slate-200 text-slate-900 placeholder-slate-400';
     const filterBtnBase = isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-800';

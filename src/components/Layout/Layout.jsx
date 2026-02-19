@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import PlotTabs from './PlotTabs';
+import ErrorBoundary from '../ErrorBoundary';
 import { useApp } from '../../context/AppContext';
 
 export default function Layout() {
@@ -29,7 +30,9 @@ export default function Layout() {
                 <Header onMenuClick={() => setSidebarOpen(true)} />
                 <PlotTabs />
                 <main className="flex-1 p-4 md:p-6 animate-fade-in">
-                    <Outlet />
+                    <ErrorBoundary>
+                        <Outlet />
+                    </ErrorBoundary>
                 </main>
             </div>
         </div>

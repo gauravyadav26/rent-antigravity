@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
+import { useToast } from '../Toast';
 import { calculateDue, formatIndianNumber } from '../../lib/calculations';
 import { X, LogOut } from 'lucide-react';
 
 export default function VacateModal({ tenant, onClose }) {
     const { vacateTenant, theme } = useApp();
+    const toast = useToast();
     const isDark = theme === 'dark';
     const today = new Date().toISOString().split('T')[0];
 
@@ -25,6 +27,7 @@ export default function VacateModal({ tenant, onClose }) {
             : null;
         vacateTenant(tenant.id, form.vacatedDate, form.vacationNotes, finalPayment);
         setLoading(false);
+        toast(`${tenant.tenantName} has been vacated`, 'success');
         onClose();
     };
 

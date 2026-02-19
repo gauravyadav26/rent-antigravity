@@ -255,5 +255,5 @@ export function debounce(fn, delay) {
  * Generate unique ID.
  */
 export function generateId() {
-    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+    return crypto.randomUUID();
 }

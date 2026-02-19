@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
+import { useToast } from '../Toast';
 import { getLastReading, formatDate } from '../../lib/calculations';
 import { X, Zap, RefreshCw } from 'lucide-react';
 
 export default function ElectricityModal({ tenant, onClose, initialData = null }) {
     const { addElectricityReading, editElectricityReading, theme } = useApp();
+    const toast = useToast();
     const isDark = theme === 'dark';
     const today = new Date().toISOString().split('T')[0];
     const isEdit = !!initialData;
@@ -64,6 +66,7 @@ export default function ElectricityModal({ tenant, onClose, initialData = null }
         }
 
         setLoading(false);
+        toast(isEdit ? 'Reading updated' : 'Electricity reading recorded', 'success');
         onClose();
     };
 

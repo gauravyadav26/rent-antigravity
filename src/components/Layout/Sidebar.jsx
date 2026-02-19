@@ -42,7 +42,7 @@ export default function Sidebar({ isOpen, onClose }) {
                         <div className={`text-xs ${textMuted}`}>Property Manager</div>
                     </div>
                 </div>
-                <button onClick={onClose} className={`lg:hidden p-1.5 rounded-lg ${inactiveClass}`}>
+                <button onClick={onClose} className={`lg:hidden p-1.5 rounded-lg ${inactiveClass}`} aria-label="Close sidebar">
                     <X size={16} />
                 </button>
             </div>

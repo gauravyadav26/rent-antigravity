@@ -128,6 +128,7 @@ export default function PaymentHistory() {
                                             <button
                                                 onClick={() => { if (confirm('Delete this payment?')) deletePayment(p.tenantId, p.id); }}
                                                 className="text-red-400 hover:text-red-300 transition-colors"
+                                                aria-label="Delete payment"
                                             >
                                                 <Trash2 size={12} />
                                             </button>

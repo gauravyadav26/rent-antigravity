@@ -1,11 +1,14 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import {
     loadFromStorage, saveToStorage, loadAllFromStorage, saveAllToStorage,
-    loadTheme, saveTheme, loadCurrentPlot, saveCurrentPlot
+    loadTheme, saveTheme, loadCurrentPlot, saveCurrentPlot,
+    loadDataVersion, saveDataVersion
 } from '../lib/storage';
 import { loadFromFirebase, saveAllToFirebase, deleteTenantFromFirebase, loadAllFromFirebase, auth, logout } from '../lib/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { generateId } from '../lib/calculations';
+import { validateTenant, sanitizeTenant } from '../lib/validation';
+import { migrateData, CURRENT_DATA_VERSION } from '../lib/migration';
 
 // Set to false to enable sync with real Firebase
 const LOCAL_ONLY_MODE = false;
@@ -21,6 +24,8 @@ export function AppProvider({ children }) {
     const [allTenants, setAllTenants] = useState([]);
     const [syncStatus, setSyncStatus] = useState('idle'); // idle | syncing | synced | error
     const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const syncLockRef = useRef(false);
+    const storageWarningShownRef = useRef(false);
 
     // Auth Listener
     useEffect(() => {
@@ -31,68 +36,37 @@ export function AppProvider({ children }) {
         return () => unsubscribe();
     }, []);
 
-    // Load tenants from localStorage on mount, auto-sync from Firebase if empty
+    // Load tenants from localStorage on mount, run migrations, auto-sync from Firebase
     useEffect(() => {
         if (authLoading) return; // Wait for auth to settle
 
         let stored = loadAllFromStorage();
+        const storedVersion = loadDataVersion();
 
-        // Fix missing IDs in legacy data (one-time migration)
-        let dataChanged = false;
-        stored = stored.map(t => {
-            let changed = false;
-            const paymentIds = new Set();
-            const paymentHistory = (t.paymentHistory || []).map(p => {
-                if (!p.id || paymentIds.has(String(p.id))) {
-                    changed = true;
-                    const newId = generateId();
-                    paymentIds.add(newId);
-                    return { ...p, id: newId };
-                }
-                paymentIds.add(String(p.id));
-                return p;
-            });
-
-            const readingIds = new Set();
-            const electricityReadings = (t.electricityReadings || []).map(r => {
-                if (!r.id || readingIds.has(String(r.id))) {
-                    changed = true;
-                    const newId = generateId();
-                    readingIds.add(newId);
-                    return { ...r, id: newId };
-                }
-                readingIds.add(String(r.id));
-                return r;
-            });
-
-            if (changed) {
-                dataChanged = true;
-                return { ...t, paymentHistory, electricityReadings };
-            }
-            return t;
-        });
-
-        if (dataChanged) {
+        // Run data migrations if needed
+        if (storedVersion < CURRENT_DATA_VERSION && stored.length > 0) {
+            const { tenants: migrated, version } = migrateData(stored, storedVersion);
+            stored = migrated;
             saveAllToStorage(stored);
+            saveDataVersion(version);
+            console.log(`Data migrated from v${storedVersion} to v${version}`);
+        } else if (stored.length > 0) {
+            saveDataVersion(CURRENT_DATA_VERSION);
         }
 
         if (stored.length > 0) {
             setAllTenants(stored);
         }
 
-        // Sync if online, not local mode, and (IMPORTANT) user is logged in
+        // Sync if online, not local mode, and user is logged in
         if (!LOCAL_ONLY_MODE && navigator.onLine && user) {
-            // First time / fresh install — pull from Firebase
             setSyncStatus('syncing');
             loadAllFromFirebase().then(firebaseTenants => {
                 if (firebaseTenants && firebaseTenants.length > 0) {
-                    // Normalize data: ensure status exists
-                    const normalized = firebaseTenants.map(t => ({
-                        ...t,
-                        status: t.status || (t.vacatedDate ? 'vacated' : 'active')
-                    }));
-                    setAllTenants(normalized);
-                    saveAllToStorage(normalized);
+                    // Sanitize Firebase data to handle malformed records
+                    const sanitized = firebaseTenants.map(t => sanitizeTenant(t)).filter(Boolean);
+                    setAllTenants(sanitized);
+                    saveAllToStorage(sanitized);
                 }
                 setSyncStatus('synced');
                 setTimeout(() => setSyncStatus('idle'), 3000);
@@ -134,7 +108,13 @@ export function AppProvider({ children }) {
     // Persist to localStorage whenever allTenants changes
     const persistTenants = useCallback((tenants) => {
         setAllTenants(tenants);
-        saveAllToStorage(tenants);
+        const result = saveAllToStorage(tenants);
+        // Warn about storage quota (only once per session)
+        if (result.quotaWarning && !storageWarningShownRef.current) {
+            storageWarningShownRef.current = true;
+            console.warn(`localStorage usage: ${result.usagePercent}%. Consider exporting a backup.`);
+        }
+        return result;
     }, []);
 
     // Tenants for current plot
@@ -154,9 +134,14 @@ export function AppProvider({ children }) {
             vacationNotes: '',
             ...tenantData,
         };
+        // Validate before persisting
+        const { valid, errors } = validateTenant(newTenant);
+        if (!valid) {
+            console.error('Tenant validation failed:', errors);
+            return { error: true, errors };
+        }
         const updated = [...allTenants, newTenant];
         persistTenants(updated);
-        // Background sync (disabled in LOCAL_ONLY_MODE)
         if (!LOCAL_ONLY_MODE && isOnline && user) syncTenantToFirebase(currentPlot === 'all' ? updated : updated.filter(t => t.plotName === currentPlot));
         return newTenant;
     }, [allTenants, currentPlot, isOnline, persistTenants, user]);
@@ -215,7 +200,7 @@ export function AppProvider({ children }) {
             return { ...t, paymentHistory };
         });
         persistTenants(updated);
-        if (!LOCAL_ONLY_MODE && isOnline && user) syncTenantToFirebase(updated.filter(t => t.plotName === currentPlot));
+        if (!LOCAL_ONLY_MODE && isOnline && user) syncTenantToFirebase(currentPlot === 'all' ? updated : updated.filter(t => t.plotName === currentPlot));
     }, [allTenants, currentPlot, isOnline, persistTenants, user]);
 
     const editPayment = useCallback((tenantId, paymentId, updates) => {
@@ -279,9 +264,15 @@ export function AppProvider({ children }) {
     // --- Firebase Sync ---
     const syncTenantToFirebase = async (plotTenants) => {
         if (LOCAL_ONLY_MODE) return;
+        if (syncLockRef.current) return; // Skip if a sync is already in progress
+        syncLockRef.current = true;
         try {
             await saveAllToFirebase(plotTenants);
-        } catch { }
+        } catch {
+            console.error('Background sync failed');
+        } finally {
+            syncLockRef.current = false;
+        }
     };
 
     const syncWithFirebase = useCallback(async () => {
@@ -290,25 +281,28 @@ export function AppProvider({ children }) {
             setTimeout(() => setSyncStatus('idle'), 2000);
             return;
         }
-        if (!user) return; // Cannot sync if not logged in
-
+        if (!user) return;
+        // Prevent concurrent syncs
+        if (syncLockRef.current) {
+            console.log('Sync already in progress, skipping');
+            return;
+        }
+        syncLockRef.current = true;
         setSyncStatus('syncing');
         try {
             const firebaseTenants = await loadAllFromFirebase();
             if (firebaseTenants && firebaseTenants.length > 0) {
-                // Merge: Firebase is source of truth for existing, local wins for new
-                const localIds = new Set(allTenants.map(t => t.id));
-                const fbIds = new Set(firebaseTenants.map(t => t.id));
+                // Sanitize Firebase data and merge
+                const sanitized = firebaseTenants.map(t => sanitizeTenant(t)).filter(Boolean);
+                const fbIds = new Set(sanitized.map(t => t.id));
                 const merged = [
-                    ...firebaseTenants,
+                    ...sanitized,
                     ...allTenants.filter(t => !fbIds.has(t.id))
                 ];
                 persistTenants(merged);
-                // Push local-only tenants to Firebase
                 const localOnly = allTenants.filter(t => !fbIds.has(t.id));
                 if (localOnly.length > 0) await saveAllToFirebase(localOnly);
             } else {
-                // Firebase is empty, push all local data
                 await saveAllToFirebase(allTenants);
             }
             setSyncStatus('synced');
@@ -316,13 +310,15 @@ export function AppProvider({ children }) {
         } catch {
             setSyncStatus('error');
             setTimeout(() => setSyncStatus('idle'), 3000);
+        } finally {
+            syncLockRef.current = false;
         }
     }, [allTenants, persistTenants, user]);
 
     // --- Import/Export ---
     const exportData = useCallback(() => {
         const data = {
-            version: 1,
+            version: CURRENT_DATA_VERSION,
             exportDate: new Date().toISOString(),
             tenants: allTenants,
         };
@@ -339,20 +335,18 @@ export function AppProvider({ children }) {
         try {
             const data = typeof jsonData === 'string' ? JSON.parse(jsonData) : jsonData;
             const rawTenants = data.tenants || data; // support both formats
+            const importVersion = data.version || 1;
 
             if (!Array.isArray(rawTenants)) throw new Error('Invalid format: Expected an array of tenants');
 
-            // Transform legacy data to new schema
-            const tenants = rawTenants.map(t => ({
-                ...t,
-                id: String(t.id), // Ensure ID is string
-                status: t.status || (t.isActive === false ? 'vacated' : 'active'),
-                vacatedDate: t.vacatedDate || t.endDate || null,
-                // Ensure required arrays exist
-                paymentHistory: (t.paymentHistory || []).map(p => ({ ...p, id: p.id ? String(p.id) : generateId() })),
-                electricityReadings: (t.electricityReadings || []).map(r => ({ ...r, id: r.id ? String(r.id) : generateId() })),
-                rentHistory: t.rentHistory || []
-            }));
+            // Run migrations if imported data is from an older version
+            let tenants;
+            if (importVersion < CURRENT_DATA_VERSION) {
+                const { tenants: migrated } = migrateData(rawTenants, importVersion);
+                tenants = migrated;
+            } else {
+                tenants = rawTenants.map(t => sanitizeTenant(t)).filter(Boolean);
+            }
 
             // Merge with existing tenants (upsert based on ID)
             const existingIds = new Set(tenants.map(t => t.id));
@@ -362,9 +356,8 @@ export function AppProvider({ children }) {
             ];
 
             persistTenants(merged);
+            saveDataVersion(CURRENT_DATA_VERSION);
 
-            // In local-only mode, this does nothing (dummy export).
-            // In connected mode, it syncs to Firebase.
             if (!LOCAL_ONLY_MODE && isOnline && user) saveAllToFirebase(merged);
 
             return { success: true, count: tenants.length };
@@ -374,8 +367,8 @@ export function AppProvider({ children }) {
         }
     }, [allTenants, isOnline, persistTenants, user]);
 
-    const value = {
-        user, authLoading, logout, // Auth exposed
+    const value = useMemo(() => ({
+        user, authLoading, logout,
         theme, setTheme,
         currentPlot, setCurrentPlot,
         allTenants, tenants,
@@ -385,7 +378,18 @@ export function AppProvider({ children }) {
         addElectricityReading, editElectricityReading, deleteElectricityReading,
         syncWithFirebase,
         exportData, importData,
-    };
+    }), [
+        user, authLoading,
+        theme, setTheme,
+        currentPlot, setCurrentPlot,
+        allTenants, tenants,
+        syncStatus, isOnline,
+        addTenant, editTenant, deleteTenant, vacateTenant,
+        recordPayment, editPayment, deletePayment,
+        addElectricityReading, editElectricityReading, deleteElectricityReading,
+        syncWithFirebase,
+        exportData, importData,
+    ]);
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

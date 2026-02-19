@@ -62,6 +62,7 @@ export default function Header({ onMenuClick }) {
                 <button
                     onClick={onMenuClick}
                     className={`lg:hidden p-2 rounded-xl transition-colors ${isDark ? 'hover:bg-slate-800 text-slate-300' : 'hover:bg-slate-100 text-slate-600'}`}
+                    aria-label="Open menu"
                 >
                     <Menu size={20} />
                 </button>
@@ -107,6 +108,7 @@ export default function Header({ onMenuClick }) {
                     onClick={() => setTheme(isDark ? 'light' : 'dark')}
                     className={`p-2 rounded-xl transition-colors
             ${isDark ? 'hover:bg-slate-800 text-slate-300' : 'hover:bg-slate-100 text-slate-600'}`}
+                    aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
                 >
                     {isDark ? <Sun size={18} /> : <Moon size={18} />}
                 </button>

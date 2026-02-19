@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
+import { useToast } from '../Toast';
 import { calculateDue, formatIndianNumber, formatDate } from '../../lib/calculations';
 import { X, CreditCard } from 'lucide-react';
 
 export default function PaymentModal({ tenant, onClose, initialData = null }) {
     const { recordPayment, editPayment, theme } = useApp();
+    const toast = useToast();
     const isDark = theme === 'dark';
     const today = new Date().toISOString().split('T')[0];
     const isEdit = !!initialData;
@@ -32,6 +34,7 @@ export default function PaymentModal({ tenant, onClose, initialData = null }) {
         }
 
         setLoading(false);
+        toast(isEdit ? 'Payment updated' : `Payment of ₹${form.amount} recorded`, 'success');
         onClose();
     };
 

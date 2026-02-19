@@ -55,7 +55,12 @@ export default function MonthlyHistory() {
             for (let i = 1; i < readings.length; i++) {
                 const d = new Date(readings[i].date);
                 if (d.getFullYear() === date.getFullYear() && d.getMonth() === date.getMonth()) {
-                    const units = readings[i].reading - readings[i - 1].reading;
+                    let units = 0;
+                    if (readings[i].meterChange) {
+                        units = (readings[i].lastMeterReading || 0) - readings[i - 1].reading;
+                    } else {
+                        units = readings[i].reading - readings[i - 1].reading;
+                    }
                     if (units > 0) electricityBills += units * (t.electricityRate || 10);
                 }
             }
