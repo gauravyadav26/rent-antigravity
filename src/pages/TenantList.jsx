@@ -51,6 +51,7 @@ function TenantCard({ tenant, isDark, onEdit, onPayment, onElectricity, onVacate
                     <div>
                         <p className={`text-xs ${textMuted}`}>Last Paid</p>
                         <p className="text-sm font-semibold">{lastPayment ? `₹${formatIndianNumber(lastPayment.amount)}` : '-'}</p>
+                        {lastPayment && <p className={`text-xs mt-0.5 ${textMuted}`} style={{ fontSize: '8px' }}>{formatDate(lastPayment.date)}</p>}
                     </div>
                     <div>
                         <p className={`text-xs ${textMuted}`}>Meter</p>
