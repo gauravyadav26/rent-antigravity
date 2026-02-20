@@ -10,11 +10,12 @@ import { ArrowLeft, Edit2, Trash2, CreditCard, Zap, LogOut, TrendingUp } from 'l
 import PaymentModal from '../components/modals/PaymentModal';
 import ElectricityModal from '../components/modals/ElectricityModal';
 import VacateModal from '../components/modals/VacateModal';
+import RentHistoryModal from '../components/modals/RentHistoryModal';
 
 export default function TenantDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { allTenants, deletePayment, editPayment, deleteElectricityReading, theme } = useApp();
+    const { allTenants, deletePayment, editPayment, deleteElectricityReading, deleteRentHistory, theme } = useApp();
     const isDark = theme === 'dark';
 
     const [paymentModal, setPaymentModal] = useState(false);
@@ -22,6 +23,9 @@ export default function TenantDetail() {
     const [vacateModal, setVacateModal] = useState(false);
     const [editingPayment, setEditingPayment] = useState(null);
     const [editingReading, setEditingReading] = useState(null);
+    const [rentHistoryModal, setRentHistoryModal] = useState(false);
+    const [editingRentEntry, setEditingRentEntry] = useState(null);
+    const [editingRentIndex, setEditingRentIndex] = useState(null);
 
     const tenant = allTenants.find(t => String(t.id) === id);
     if (!tenant) return (
@@ -45,6 +49,8 @@ export default function TenantDetail() {
     const sortedReadings = [...(tenant.electricityReadings || [])].sort((a, b) => new Date(b.date) - new Date(a.date));
     const sortedPayments = [...(tenant.paymentHistory || [])].sort((a, b) => new Date(b.date) - new Date(a.date));
     const sortedRentHistory = [...(tenant.rentHistory || [])].sort((a, b) => new Date(b.date) - new Date(a.date));
+    // Ascending sorted for correct index mapping
+    const ascRentHistory = [...(tenant.rentHistory || [])].sort((a, b) => new Date(a.date) - new Date(b.date));
 
     return (
         <div className="max-w-2xl mx-auto space-y-5 animate-slide-in">
@@ -130,12 +136,30 @@ export default function TenantDetail() {
                         <h2 className="text-sm font-semibold">Rent History</h2>
                     </div>
                     <div className="divide-y divide-inherit">
-                        {sortedRentHistory.map((entry, i) => (
-                            <div key={i} className="flex justify-between items-center px-4 py-3 text-sm">
-                                <span className={textMuted}>{formatDate(entry.date)}</span>
-                                <span className="font-semibold">₹{formatIndianNumber(entry.amount)}/mo</span>
-                            </div>
-                        ))}
+                        {sortedRentHistory.map((entry, i) => {
+                            const ascIndex = ascRentHistory.findIndex(e => e.date === entry.date && e.amount === entry.amount);
+                            return (
+                                <div key={i} className={`flex justify-between items-center px-4 py-3 text-sm ${isDark ? 'hover:bg-slate-700/30' : 'hover:bg-slate-50'}`}>
+                                    <span className={textMuted}>{formatDate(entry.date)}</span>
+                                    <div className="flex items-center gap-3">
+                                        <span className="font-semibold">₹{formatIndianNumber(entry.amount)}/mo</span>
+                                        <button onClick={() => { setEditingRentEntry(entry); setEditingRentIndex(ascIndex); setRentHistoryModal(true); }}
+                                            className="text-violet-400 hover:text-violet-300 transition-colors" aria-label="Edit rent entry">
+                                            <Edit2 size={12} />
+                                        </button>
+                                        <button onClick={() => {
+                                            if (sortedRentHistory.length <= 1) return;
+                                            if (confirm('Delete this rent entry?')) deleteRentHistory(tenant.id, ascIndex);
+                                        }}
+                                            className={`transition-colors ${sortedRentHistory.length <= 1 ? 'text-slate-600 cursor-not-allowed' : 'text-red-400 hover:text-red-300'}`}
+                                            disabled={sortedRentHistory.length <= 1}
+                                            aria-label="Delete rent entry">
+                                            <Trash2 size={12} />
+                                        </button>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             )}
@@ -265,6 +289,7 @@ export default function TenantDetail() {
             {paymentModal && <PaymentModal tenant={tenant} initialData={editingPayment} onClose={() => { setPaymentModal(false); setEditingPayment(null); }} />}
             {electricityModal && <ElectricityModal tenant={tenant} initialData={editingReading} onClose={() => { setElectricityModal(false); setEditingReading(null); }} />}
             {vacateModal && <VacateModal tenant={tenant} onClose={() => setVacateModal(false)} />}
+            {rentHistoryModal && <RentHistoryModal tenant={tenant} initialData={editingRentEntry} entryIndex={editingRentIndex} onClose={() => { setRentHistoryModal(false); setEditingRentEntry(null); setEditingRentIndex(null); }} />}
         </div>
     );
 }

@@ -261,6 +261,33 @@ export function AppProvider({ children }) {
         if (!LOCAL_ONLY_MODE && isOnline && user) syncTenantToFirebase(currentPlot === 'all' ? updated : updated.filter(t => t.plotName === currentPlot));
     }, [allTenants, currentPlot, isOnline, persistTenants, user]);
 
+    const editRentHistory = useCallback((tenantId, entryIndex, updates) => {
+        const updated = allTenants.map(t => {
+            if (String(t.id) !== String(tenantId)) return t;
+            const sorted = [...(t.rentHistory || [])].sort((a, b) => new Date(a.date) - new Date(b.date));
+            if (entryIndex < 0 || entryIndex >= sorted.length) return t;
+            sorted[entryIndex] = { ...sorted[entryIndex], ...updates, amount: Number(updates.amount || sorted[entryIndex].amount) };
+            // Update monthlyRent to match the latest entry
+            const latest = [...sorted].sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+            return { ...t, rentHistory: sorted, monthlyRent: latest.amount };
+        });
+        persistTenants(updated);
+        if (!LOCAL_ONLY_MODE && isOnline && user) syncTenantToFirebase(currentPlot === 'all' ? updated : updated.filter(t => t.plotName === currentPlot));
+    }, [allTenants, currentPlot, isOnline, persistTenants, user]);
+
+    const deleteRentHistory = useCallback((tenantId, entryIndex) => {
+        const updated = allTenants.map(t => {
+            if (String(t.id) !== String(tenantId)) return t;
+            const sorted = [...(t.rentHistory || [])].sort((a, b) => new Date(a.date) - new Date(b.date));
+            if (sorted.length <= 1 || entryIndex < 0 || entryIndex >= sorted.length) return t;
+            sorted.splice(entryIndex, 1);
+            const latest = [...sorted].sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+            return { ...t, rentHistory: sorted, monthlyRent: latest.amount };
+        });
+        persistTenants(updated);
+        if (!LOCAL_ONLY_MODE && isOnline && user) syncTenantToFirebase(currentPlot === 'all' ? updated : updated.filter(t => t.plotName === currentPlot));
+    }, [allTenants, currentPlot, isOnline, persistTenants, user]);
+
     // --- Firebase Sync ---
     const syncTenantToFirebase = async (plotTenants) => {
         if (LOCAL_ONLY_MODE) return;
@@ -376,6 +403,7 @@ export function AppProvider({ children }) {
         addTenant, editTenant, deleteTenant, vacateTenant,
         recordPayment, editPayment, deletePayment,
         addElectricityReading, editElectricityReading, deleteElectricityReading,
+        editRentHistory, deleteRentHistory,
         syncWithFirebase,
         exportData, importData,
     }), [
@@ -387,6 +415,7 @@ export function AppProvider({ children }) {
         addTenant, editTenant, deleteTenant, vacateTenant,
         recordPayment, editPayment, deletePayment,
         addElectricityReading, editElectricityReading, deleteElectricityReading,
+        editRentHistory, deleteRentHistory,
         syncWithFirebase,
         exportData, importData,
     ]);
